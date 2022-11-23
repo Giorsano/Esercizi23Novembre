@@ -1,0 +1,35 @@
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.File; //innanzitutto importiamo la libreria File per poter creare l'oggetto per leggere
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+
+        //creiamo l'oggetto lettore e gli diamo come parametro il nome del file (compresa di estensione)
+        String path = "C:\\Users\\GiordANO\\IdeaProjects\\Esercitazione\\src\\test.txt";
+        path = path.replace("\\", "/");
+        File lettore = new File(path);
+
+        //creare uno scanner che prende in imput il nome dell'oggeto File
+        Scanner scanner = new Scanner(lettore);
+
+        FileWriter scrittore = new FileWriter("test2.txt");
+
+        int contatore = 0;
+
+        //Eseguiamo un ciclo while per leggere
+        while (scanner.hasNextLine()) {
+            String testo = scanner.nextLine();
+            System.out.println(testo);
+            contatore++;
+            scrittore.write(testo + " " + contatore +"\n");
+        }
+        scanner.close();
+        scrittore.close();
+
+
+
+    }
+}
