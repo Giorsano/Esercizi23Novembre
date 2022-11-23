@@ -1,0 +1,43 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        String path = "C:\\Users\\GiordANO\\IdeaProjects\\Esercitazione\\src\\test.txt";
+        path = path.replace("\\", "/");
+        File lettore = new File(path);
+        Scanner scanner = new Scanner(lettore);
+        while (scanner.hasNextLine()) {
+            String a = scanner.nextLine();
+
+
+            String[] stringa = a.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
+            System.out.println();
+            System.out.println(Arrays.toString(stringa));
+            for(int i = 0; i < stringa.length; i++){
+                confronto("e", stringa[i]);
+
+            }
+
+        }
+        scanner.close();
+
+
+
+    }
+
+    public static void confronto(String a, String b) {
+        if (a.equals(b)) {
+            System.out.println("La parola è contenuta nel testo");
+        } else {
+            System.out.println("La parola non è contenuta nel testo");
+        }
+    }
+
+
+
+
+}
